@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /**
  * Memory management
@@ -39,13 +40,15 @@ void CStyleMemoryAllocation()
     *p = 70;
     printf("calloc value: %d,   Address = %p \n", *p, p);
     free(p);
+    p = NULL;
 
     /// realloc
     p = (int*)realloc(p, sizeof(int));
     // reallocate 10 times sizeof int
     // p = (int*)realloc(p, 10 * sizeof(int));
-    *p = 128;
+    *p = 123;
     printf("realloc value: %d,  Address = %p \n", *p, p);
+    free(p);
 
     printf("End - C-style memory allocation \n\n");
 }
@@ -78,12 +81,72 @@ void CppOperatorNewDelete()
     delete p;
     p = nullptr;
     
-    printf("End - C++ dynamic  memory allocation \n");
+    printf("End - C++ dynamic  memory allocation \n\n");
 }
+
+/**
+ * Dynamic memory allocation for arrays
+*/
+void CppOperatorNewDeleteArray()
+{
+    printf("Begin - C++ dynamic memory allocation for arrays \n");
+    int *p = new int[5];
+    // using uniform initialisation
+    //int *p = new int[5]{ 1, 2, 3, 4, 5 };
+    printf("uninitialized array pointer value: %d,   Address = %p \n", *p, (void*)&p);
+    for(int i = 0 ;i < 5; ++i)
+    {
+        p[i] = i;
+        printf("Array value at index[%d]: %d,   Address = %p \n", i, p[i], (void*)&p[i]);
+    }
+    delete []p;
+    printf("End - C++ dynamic memory allocation for arrays \n\n");
+}
+
+void CppOperatorNewDeleteArrayStrings()
+{
+    printf("Begin - C++ dynamic memory allocation for STRING arrays \n");
+    // always allocate enough memory for the string and the terminating character
+    // see below 4 have been allocated for the three letters of C++ and in termination char
+    char *p = new char[4];
+    strcpy( p, "C++");
+    printf("char * array: %d,   Address = %p \n", *p, (void*)&p);
+    printf("char * array value: %s\n", p);
+    printf("End - C++ dynamic memory allocation for STRING arrays \n\n");
+    delete []p;
+}
+
+void CppOperatorNewDelete2D()
+{
+    printf("Begin - C++ dynamic memory allocation for 2D arrays \n");
+    // need to make each row in the array 
+    int *p1 = new int[3];
+    int *p2 = new int[3];
+    // add all of the pointer arrays to a pointer to pointers
+    int **arr = new int *[2]; 
+    arr[0] = p1;
+    arr[1] = p2;
+    printf("array[0] garbage value: %d,   Address = %p \n", *arr[0], (void*)&arr[0]);
+    printf("array[1] garbage value: %d,   Address = %p \n", *arr[1], (void*)&arr[1]);
+    // assign a value to a spot in the array
+    arr[1][2] = 90;
+    printf("array[1][2] value: %d,   Address = %p \n", arr[1][2], (void*)&arr[1][2]);
+    // delete 2D array - must be in same order it was created
+    delete []arr[0];    // OR delete []p1;
+    delete []p2;        // OR delete []arr[1];
+    // then delete 2D array
+    delete []arr;
+
+    printf("End - C++ dynamic memory allocation for 2D arrays \n\n");
+}
+
 
 int main(int argc, char const *argv[])
 {
     CStyleMemoryAllocation();
     CppOperatorNewDelete();
+    CppOperatorNewDeleteArray();
+    CppOperatorNewDeleteArrayStrings();
+    CppOperatorNewDelete2D();
     return 0;
 }

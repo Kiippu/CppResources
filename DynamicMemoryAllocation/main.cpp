@@ -18,6 +18,7 @@
 void CStyleMemoryAllocation()
 {
     printf("Begin - C-style memory allocation \n");
+
     /// malloc
     // C-style cast as malloc in C++ of return type void
     // allocate size in bytes 
@@ -45,11 +46,44 @@ void CStyleMemoryAllocation()
     // p = (int*)realloc(p, 10 * sizeof(int));
     *p = 128;
     printf("realloc value: %d,  Address = %p \n", *p, p);
+
     printf("End - C-style memory allocation \n\n");
+}
+
+/**
+ * Dynamic memory allocation - new and delete
+ *  - new - allocates memory on the heap
+ *  - delete - deallocates memory on the heap
+ * Characteristics:
+ *  - new is an operator and can be overloaded
+ *  - size of the allocation i ascertained from type
+ *  - can be a class as it can call constructor
+ *  - can init memory on creation
+ *  - throws an exception instead of a runtime error  
+*/
+void CppOperatorNewDelete()
+{
+    printf("Begin - C++ dynamic memory allocation \n");
+
+    int *p = new int();
+    printf("new uninitialized value: %d,   Address = %p \n", *p, p);
+    delete p;   // delete memory allocated before using it again
+    printf("new uninitialized value: %d,   Address = %p \n", *p, p);
+
+    p = new int(5);
+    printf("new initialized value: %d,   Address = %p \n", *p, p);
+    // trying to access a nullptr will result in an exception
+    // p = nullptr;
+    // printf("new initialized value: %d,   Address = %p \n", *p, p);
+    delete p;
+    p = nullptr;
+    
+    printf("End - C++ dynamic  memory allocation \n");
 }
 
 int main(int argc, char const *argv[])
 {
     CStyleMemoryAllocation();
+    CppOperatorNewDelete();
     return 0;
 }

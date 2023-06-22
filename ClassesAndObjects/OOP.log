@@ -1,0 +1,38 @@
+OOP - Object Oriented programming
+
+Step 1: Abstraction
+    - focus on important details
+    - Unwanted features are left out
+
+Step 2: Encapsilation 
+    - hides the implementation details of a class
+    - Objects of these classes are easy to use
+    - internal implementation can be chaged eithout the users knowledge
+    - implemented though access modifiers (public, private, and protected)
+    +---------------+-----------------------+--------------------------+--------------------------+
+    |               |                                 Derived class                               |
+    +---------------+-----------------------+--------------------------+--------------------------+
+    | Base class    | base : public derived | base : private derivede  | base : protected derived |
+    +---------------+-----------------------+--------------------------+--------------------------+
+    | private       | Not inherited         | Not inherited            | Not inherited            |
+    | protected     | protected             | private                  | protected                |
+    | public        | public                | private                  | protected                |
+    +---------------+-----------------------+--------------------------+--------------------------+
+
+Step 3: Inheritance
+    - hierarchy of classes
+    - behavior is given to derived classes from base class
+
+Step 4: Composition
+    - signifies relationship between Objects
+    - represented as "has-a" or "part-of" relationship
+        - eg. car has a engine
+
+Step 5: Polymorphism
+    - one Object with different forms
+    - common behavior with different implementation
+        - eg. car, person, plane all move but move differently
+    - implemented though function overloading, remplates and virtual functions
+
+ 
+

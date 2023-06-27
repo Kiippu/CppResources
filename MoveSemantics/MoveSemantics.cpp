@@ -52,14 +52,17 @@ Integer Add(const Integer &a, const Integer &b)
     Integer temp;
     temp.setValue(a.getValue() + b.getValue());
     // move temp 
-    return temp;
+    return temp; // uses name return optimization
+    // return Integer(a + b); // uses name return optimization
 }
 
 int main(int argc, char const *argv[])
 {
     // create 2 objects
     Integer a(1), b(3);
-    // use moved temp and getValue form it not a copy
+    // use moved temp and getValue from it not a copy
+    // u move/copy Elision
+    //  - compiler skips a move or copy assignment/constructor 
     a.setValue(Add(a,b).getValue());
     return 0;
 }

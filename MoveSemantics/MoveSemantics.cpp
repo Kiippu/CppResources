@@ -64,5 +64,10 @@ int main(int argc, char const *argv[])
     // u move/copy Elision
     //  - compiler skips a move or copy assignment/constructor 
     a.setValue(Add(a,b).getValue());
+
+    // move a into variable c
+    Integer c{std::move(a)};
+
+
     return 0;
 }

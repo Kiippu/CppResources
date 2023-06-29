@@ -12,7 +12,7 @@ int& Transform(int &x)
 
 int main(int argc, char const *argv[])
 {
-    // R-Value refernce will bind to a R-value 
+    // R-Value reference will bind to a R-value 
     int &&r1 = 10;
     int &&r2 = Add(3,2);
 

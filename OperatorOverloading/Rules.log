@@ -1,0 +1,10 @@
+Rules
+ - Associativity m precedece and arity(operand count) does not change
+ - operand functions should be static
+    - except for new and delete
+ - one argument overloads should be user defined type
+ - global overload if first operand is primative type
+ - not all operators can be overload
+    - . ? : *
+ - cannot define new operators 
+ - overload for conventional behaviour only

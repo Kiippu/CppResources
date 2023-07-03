@@ -1,5 +1,11 @@
 /**
- * 
+ * explicit and implicit casting
+ * adding explict qualifier disallows Implicit casting
+ * implicit casting
+ *  - compiler casts primitive into user defined - unnecessary or unwanted copying could occur
+ * Explicit casting
+ *  - force the compiler to only cast using explicit casting
+ *      - no copy constructor is used in the creation of this object
  * 
 */
 

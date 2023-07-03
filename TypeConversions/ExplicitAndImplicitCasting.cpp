@@ -5,6 +5,7 @@
 
 class aClass 
 {
+    bClass k;
     int i;
 public:
     // adding explicit qualifier disallows Implicit casting
@@ -16,6 +17,16 @@ public:
     // BEST - force only explicit user->primitive casting
     explicit operator float(){ return i;}
 
+    // cast this class in to another to aClass can be cast to bClass
+    operator bClass()
+    {
+        return k;
+    }
+};
+
+class bClass
+{
+    int x{5};
 };
 
 int main(int argc, char const *argv[])
@@ -34,6 +45,12 @@ int main(int argc, char const *argv[])
     int b = a1;
     // best to force explicit casting
     float b = static_cast<float>(a1);
+
+    // this is possible if aClass has th operator == overloaded
+    // bClass bTemp;
+    // if (a2 == bTemp)
+    // {   
+    // }
 
     /* code */
     return 0;

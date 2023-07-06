@@ -51,7 +51,7 @@ int main(int argc, char const *argv[])
 
     // on exit of scope emp and pro pointers are destroyed
     // BUT that does not release the pointers as they now have a ref count of 1 on.
-    // WHY: the pointer is destrustedn ot the object. the object is  only destroyed on a ref count of 0
+    // WHY: the pointer is destroyed that points to the object. the object is only destroyed on a ref count of 0
     // FIX: imply ownership, make the members std::weak_ptr's 
 
     return 0;

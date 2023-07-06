@@ -5,6 +5,12 @@
  * RESULT:  undefined behaviour. memory leaks.
  * FIX:     add a custom deleter for the smart pointer
  * 
+ * NOTE:    std::make_ functions can nt implement custom deleter functions
+ * 
+ * IMPORTANT:   using std::make_ functions will reduce calls to new and delete
+ *              using new for a smart pointer will result in another call(new) 
+ *              to create the smart pointer control block(ref_count etc).
+ * 
 */
 #include <cstdlib>
 #include <iostream>

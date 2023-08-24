@@ -10,6 +10,16 @@
  *  - Reuse & inherit behaviour
  *  - Represents "is-a/an" relationship
  * Example: a cow is an animal and therefore it has all the attributes of other animals
+ * 
+ * Access modifiers in inheritance 
+ * If Public        then all inherited access modifiers stay the same
+ * If Protected     then all inherited public turn into protected and and others stay the same
+ * If Private       then all inherited access modifiers become protected
+ * 
+ * Object Construction
+ *  - Construction: base  -> child -> ..
+ *  - Destructors:  child -> base  -> ..
+ *  - base data members will be part of child object
 */
 #include <iostream>
 

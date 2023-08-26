@@ -54,11 +54,11 @@ public:
 
 };
 
-int main(int argc, char const *argv[])
-{
-    Charts c;
-    c.draw();
-    c.update();
-    c.event();
-    return 0;
-}
+// int main(int argc, char const *argv[])
+// {
+//     Charts c;
+//     c.draw();
+//     c.update();
+//     c.event();
+//     return 0;
+// }

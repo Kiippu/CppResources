@@ -8,7 +8,12 @@ int main(int argc, char const *argv[])
     std::string name{"Kory"};
     //Checking acc{name,100};
     Savings acc{name,100,0.05};
+    Account *pAccount2 = &acc;
     Transactions(&acc);
+    const std::type_info &ti = typeid(*pAccount2);
+    // type check any type to make sure the class has the features required.
+    if(ti == typeid(Savings))
+        std::cout << "Minimum Balance: " << pAccount2->GetInterestRate() << std::endl;
 
     // Up casting               GOOD
     Account *pAccount = &acc;

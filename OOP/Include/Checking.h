@@ -4,12 +4,14 @@
 class Checking final : public Account
 {
 private:
+    float m_minimumBalance;
 public:
-    //Checking(const std::string &name, float balance);
     // inherited base class constructor
     using Account::Account;
+    Checking(const std::string &name, float balance, float minBal);
     
     void Withdraw(float amount) override;
+    float GetMinimumBalance() const;
 };
 
 /**

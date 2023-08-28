@@ -16,7 +16,9 @@ protected:
     float m_balance;
 public:
     Account(const std::string &name, float balance);
-    ~Account();
+    // must be mad virtual so the derived class destructor will be called
+    // even when the object is the base obj 
+    virtual ~Account();
     const std::string GetName() const;
     float GetBalance() const;
     int GetAccountNo() const;

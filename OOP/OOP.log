@@ -45,7 +45,7 @@ Step 5: Polymorphism
  VTable and VPtr
     - use of virtual keyword will make the compiler generate a Virtual 
         table of fucntion pointers.
-    Vtable contains address of virtual functions
+    Vtable contains address of virtual functions. each taking 4 bytes
     Non-virtual funcitons do not appear in the Vtable
     The base class is automatically give a new member called a Virtual Pointer by the compiler.
         this member holds the address of the virtual table.

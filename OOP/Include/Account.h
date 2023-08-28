@@ -1,3 +1,10 @@
+/**
+ * Polymorphism
+ *  a base class is able to use its derived 
+ *  class polymorphic methods when virthal 
+ *  functions are called.
+*/
+
 #include <iostream>
 
 class Account
@@ -14,8 +21,8 @@ public:
     float GetBalance() const;
     int GetAccountNo() const;
 
-    void AccumulateInterest();
-    void Withdraw(float amount);
-    void Deposit(float amount);
-    float GetInterestRate() const;
+    virtual void AccumulateInterest();
+    virtual void Withdraw(float amount);
+    virtual void Deposit(float amount);
+    virtual float GetInterestRate() const;
 };

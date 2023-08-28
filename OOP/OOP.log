@@ -51,3 +51,14 @@ Step 5: Polymorphism
         this member holds the address of the virtual table.
     When the class in inherited, the derived class will inherite the vTable and the 
         derived overriden virtual methods will replace the base method addresses.
+
+RTTI - (Run-time type information) is a mechanism that exposes information about an object’s data type at runtime
+
+Use of typeinfo and dynamic_cast
+    adds xtra infomation to poymorphic classes
+    adds type under type_info_object to each class VTable
+    At runtime this info will be queried
+    AVOID - WHY?
+        dynamic_cast will need to run though hirachy to see if it can cast or not.
+    How to avoid?
+        - rely on polymorphism!

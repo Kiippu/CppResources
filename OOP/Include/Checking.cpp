@@ -3,7 +3,7 @@
 // s
 
 Checking::Checking(const std::string &name, float balance, float minBal)
-    : m_minimumBalance(0), Account(name,balance)
+    : m_minimumBalance(minBal), Account(name,balance)
 {
 }
 

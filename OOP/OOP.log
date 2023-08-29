@@ -62,3 +62,11 @@ Use of typeinfo and dynamic_cast
         dynamic_cast will need to run though hirachy to see if it can cast or not.
     How to avoid?
         - rely on polymorphism!
+
+Abstract class
+    - has atleast 1 pure virtual method in a class
+    - cannot be instantiated but can be used through a pointer or reference
+    - makes all instantiable classes implement the method
+    - used to creating interfaces
+    -  VTable
+        - no entry in the VTable for the base class only the derived.

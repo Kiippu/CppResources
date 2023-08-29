@@ -1,6 +1,7 @@
 #include "Account.h"
 
-class Savings : public Account
+// adding virtual so any diamond inheritance is avoided
+class Savings : virtual public Account
 {
 private:
     float m_rate;

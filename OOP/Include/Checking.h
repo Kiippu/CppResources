@@ -1,7 +1,8 @@
 #include "Account.h"
 #include <string>
 // use of final here will nto allow any other classes to derive from this class
-class Checking final : public Account
+// class Checking final : public Account
+class Checking : public Account
 {
 private:
     float m_minimumBalance;

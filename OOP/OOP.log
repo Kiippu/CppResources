@@ -70,3 +70,30 @@ Abstract class
     - used to creating interfaces
     -  VTable
         - no entry in the VTable for the base class only the derived.
+
+Diamond inheritace or multiple inheritancce
+    - when a class derives from several classes that have common base class behavior
+        - Base:     stream -> InputStream
+        - Base:     stream -> OutputStream
+        - derived:  OutputStream -> IOStream <- InputStream
+        - IOStream now contains two instances of inherited stream
+    Using VIRTUAL specifier to protect aginst Diamond inheritace
+        - base class B2 with virtual inheritace to B1 will add a VPointer to B1.
+        - if base classes with the common virtual base class are inherited, the derived class will know to access
+            the one common instance.
+        - to make sure one instance of stream is being used the derived most class must add a 
+            constructor to the virtual base class.
+            - in the exmaple above the IOStream class will have to invoke the Stream constructor like so:
+
+                IOStream::IOStream(char* data, float val)
+                    : OutputStream(data,val), InputStream(data,val) Stream(data)
+                    {
+                    }
+
+        - Construction of IOStream will be in the following order
+            - IOStream -> Stream -> OutputStream -> InputStream -> IOStream
+            - note that OutputStream and InputStream do not construct Stream
+        - Objects with virtual base classes can not be dynamically cast
+
+
+                

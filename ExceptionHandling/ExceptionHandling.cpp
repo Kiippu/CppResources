@@ -18,10 +18,18 @@
  *      exceptions in destructors should not exit logic but be handled for safety they will CTD
  * Solution: rely on RAII for heap variables like smart ptrs 
  *              smart points and some STL containers are exception safe vector, string
+ * 
+ * 
+ * noexcept specifier
+ * indicates to compiler that this method/function does not throw exceptions
+ * compiler will optimize code by forgoing the unwinding code
+ * an exception in this scope will CTD
+ * avoid using this when using libraries in the same scope.
 */
 #include <iostream>
 #include <stdexcept>
 #include <exception>
+#include "Include/NoExcept.h"
 
 
 void processStuff()
@@ -94,5 +102,7 @@ int main(int argc, char const *argv[])
     {
         std::cerr << "This is an error" << std::endl;
     }
+
+    run();
     return 0;
 }

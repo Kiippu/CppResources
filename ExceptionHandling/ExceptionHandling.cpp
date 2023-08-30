@@ -13,7 +13,11 @@
  * happens when an exception has happened and the local stack is destroyed
  * good for local variables bad for all other variables
  * no logic is ran after the exception so all manual delete's will create memory leaks
- * rely on RAII for heap variables like smart ptrs 
+ * Note: class destructors are not ran is stack unwinding 
+ *      therefore all manual deallocation logic in the destructor is not ran. 
+ *      exceptions in destructors should not exit logic but be handled for safety they will CTD
+ * Solution: rely on RAII for heap variables like smart ptrs 
+ *              smart points and some STL containers are exception safe vector, string
 */
 #include <iostream>
 #include <stdexcept>

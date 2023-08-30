@@ -8,6 +8,12 @@
  * - try : scope of exception handling, can contain other try-catch statements
  * - throw: throws the exception from the try block
  * - catch: handles the exception but catching its object, multiple catch statements can exist
+ * 
+ * Stack Unwinding
+ * happens when an exception has happened and the local stack is destroyed
+ * good for local variables bad for all other variables
+ * no logic is ran after the exception so all manual delete's will create memory leaks
+ * rely on RAII for heap variables like smart ptrs 
 */
 #include <iostream>
 #include <stdexcept>
@@ -55,8 +61,8 @@ int main(int argc, char const *argv[])
     {
         std::cerr << e.what() << std::endl;
     }
-    
-    // this catchs every exception even un documented ones - AVOID THIS!
+
+    // this catches every exception even un documented ones - AVOID THIS!
     try
     {
         processStuff();

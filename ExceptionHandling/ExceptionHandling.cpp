@@ -65,6 +65,25 @@ int main(int argc, char const *argv[])
     // this catches every exception even un documented ones - AVOID THIS!
     try
     {
+        size_t count = 3;
+        for (size_t i = 0; i < count; i++)
+        {
+            // nested exception handling
+            i+=5;
+            try
+            {
+                if(i > count)
+                {
+                    throw std::runtime_error("count is too high");
+                }
+            }
+            catch(const std::exception& e)
+            {
+                std::cerr << e.what() << '\n';
+                throw;
+            }
+        }
+        
         processStuff();
     }
     catch (...)

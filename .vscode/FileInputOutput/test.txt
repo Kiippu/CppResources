@@ -1,0 +1,1 @@
+this is a message input text to be read from somewhere

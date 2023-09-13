@@ -1,9 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "include/binaryFileUtil.h"
 #include <filesystem>
 
-struct File
+struct FileStruct
 {
     int a;
     long e;
@@ -16,10 +17,10 @@ void CopyFiles(std::string pathStr)
     std::filesystem::path path{pathStr};
     // write structs to binary
     std::ofstream build{path, std::ios::binary | std::ios::out};
-    File record{129, 312312, 34.89f, 7483.837648263, 'h'};
+    FileStruct record{129, 312312, 34.89f, 7483.837648263, 'h'};
     for (size_t i = 0; i < 123; i++)
     {
-        build.write((const char*)&record, sizeof(File));
+        build.write((const char*)&record, sizeof(FileStruct));
     }
     build.close();
 
@@ -44,10 +45,10 @@ void CopyFiles(std::string pathStr)
     // open copied file and get data
     input.open(path_output);
     size_t size = (count / sizeof(File));
-    File file[size];
+    FileStruct file[size];
     for (size_t i = 0; i < size; i++)
     {
-        input.read((char*)&file[i], sizeof(File));
+        input.read((char*)&file[i], sizeof(FileStruct));
     }
     input.close();
     
@@ -57,6 +58,9 @@ void CopyFiles(std::string pathStr)
 
 int main(int argc, char const *argv[])
 {
-    CopyFiles("binaryFile");
+    //CopyFiles("binaryFile");
+    // binaryFileUtil util{std::filesystem::current_path()};
+    // binaryFileUtil util0{};
+    
     return 0;
 }

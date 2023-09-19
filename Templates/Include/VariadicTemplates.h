@@ -37,6 +37,7 @@ void VariadicTemplate__main()
     std::cout << "VariadicTemplate__main" << std::endl;
     Print(1, 4.5, 3L, 'K', "Kory");
     PrintAgain(1, 4.5, 3L, 'K', "Kory");
+    std::cout << std::endl;
     // this function is recursive and builds on the stack
     /*
     1. Print(1, 4.5, 3L, 'K', "Kory")

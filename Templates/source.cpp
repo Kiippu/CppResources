@@ -40,6 +40,7 @@
 #include "include/AssignmentFunc.h"
 #include "include/NonTypeTemplateArgs.h"
 #include "include/VariadicTemplates.h"
+#include "include/ClassTemplates.h"
 
 int main(int argc, char const *argv[])
 {
@@ -55,5 +56,7 @@ int main(int argc, char const *argv[])
     NonTypeTemplate_main();
     // variadic templates example
     VariadicTemplate__main();
+    // class templates example
+    ClassTemplates_main();
     return 0;
 }

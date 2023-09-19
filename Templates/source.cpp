@@ -39,6 +39,7 @@
 #include <iostream>
 #include "include/AssignmentFunc.h"
 #include "include/NonTypeTemplateArgs.h"
+#include "include/VariadicTemplates.h"
 
 int main(int argc, char const *argv[])
 {
@@ -52,5 +53,7 @@ int main(int argc, char const *argv[])
 
     // run non type template code
     NonTypeTemplate_main();
+    // variadic templates example
+    VariadicTemplate__main();
     return 0;
 }

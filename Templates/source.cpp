@@ -41,6 +41,7 @@
 #include "include/NonTypeTemplateArgs.h"
 #include "include/VariadicTemplates.h"
 #include "include/ClassTemplates.h"
+#include "Include/ExplicitSpecializationTemplates.h"
 
 int main(int argc, char const *argv[])
 {
@@ -58,5 +59,7 @@ int main(int argc, char const *argv[])
     VariadicTemplate__main();
     // class templates example
     ClassTemplates_main();
+    // Template specialization
+    ExplicitSpecializationTemplates_main();
     return 0;
 }

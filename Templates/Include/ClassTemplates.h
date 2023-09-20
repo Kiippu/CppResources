@@ -38,7 +38,7 @@ T&& Stack<T, size>::Pop()
 }
 
 template <typename T, int size>
-Stack<T, size> Stack<T, size>::Create() // MUST but long hand
+Stack<T, size> Stack<T, size>::Create() // MUST write in long hand
 {
     return Stack<T,size>();
 }

@@ -43,6 +43,7 @@
 #include "include/ClassTemplates.h"
 #include "Include/ExplicitSpecializationTemplates.h"
 #include "Include/ClassTemplatesPartialSpecialization.h"
+#include "Include/TypeTraits.h"
 
 int main(int argc, char const *argv[])
 {

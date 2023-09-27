@@ -65,5 +65,7 @@ int main(int argc, char const *argv[])
     ExplicitSpecializationTemplates_main();
     // Class Templates Partial Specialization
     ClassTemplatesPartialSpecialization_main();
+    // traits and template meta programming
+    TypeTraits_main();
     return 0;
 }

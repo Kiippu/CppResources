@@ -49,6 +49,12 @@ struct factorial {
     static constexpr unsigned value = N * factorial<N - 1>::value;
 };
 
+// Specialization of the factorial template for the base case. adding this stops the error
+template <>
+struct factorial<0> {
+    static constexpr unsigned value = 1;
+};
+
 int TypeTraits_main() {
     checkType<int>();    // Prints: T is an integral type.
     checkType<double>(); // Prints: T is a floating point type.

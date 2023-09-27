@@ -44,6 +44,7 @@
 #include "Include/ExplicitSpecializationTemplates.h"
 #include "Include/ClassTemplatesPartialSpecialization.h"
 #include "Include/TypeTraits.h"
+#include "Include/StaticAssert.h"
 
 int main(int argc, char const *argv[])
 {
@@ -67,5 +68,7 @@ int main(int argc, char const *argv[])
     ClassTemplatesPartialSpecialization_main();
     // traits and template meta programming
     TypeTraits_main();
+    // static asserts
+    StaticAssert_main();
     return 0;
 }

@@ -22,6 +22,7 @@
 */
 
 #include <iostream>
+#include <memory>
 
 
 template<class T, int size, class Callback>
@@ -82,6 +83,15 @@ void LambdaExpression_main()
             std::cout << "offset0: " << ++offset0 << std::endl;
         }
     );
+
+    // Generalize lambda capture C++14
+    //  - create variables in capture list
+    //  - can have same name as as initializer
+    auto ptr = std::make_unique<int>(9);
+    auto doSomething = [ptr = std::move(ptr)](int x) mutable
+    {
+        ptr = nullptr;
+    };
 
 }
 

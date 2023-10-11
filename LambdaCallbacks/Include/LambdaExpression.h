@@ -92,6 +92,7 @@ void LambdaExpression_main()
     {
         ptr = nullptr;
     };
+    doSomething(67);
 
 }
 

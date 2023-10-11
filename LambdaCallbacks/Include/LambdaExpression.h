@@ -12,13 +12,13 @@
  * Lambda Introducer-> [](<args>) <mutable Specification> <excp specification> -> <trailing return type> { <lambda body> }
  * 
  * 
- * capture list
- * can be by copy, reference
- * use [&] to capture all variable above lambda by reference
- * use [=] to capture all variable above by copy
- * use [=, &Sum] to capture one variable Sum by reference but all others by copy 
- * use [&, Sum] to capture one variable Sum by copy and others by reference 
- * use [this] to capture class object if lambda is in class method
+ * capture list - only for local variables
+ * - can be by copy, reference
+ * - use [&] to capture all variable above lambda by reference
+ * - use [=] to capture all variable above by copy
+ * - use [=, &Sum] to capture one variable Sum by reference but all others by copy 
+ * - use [&, Sum] to capture one variable Sum by copy and others by reference 
+ * - use [this] to capture class object if lambda is in class method
 */
 
 #include <iostream>

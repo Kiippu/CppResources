@@ -24,10 +24,10 @@
 template<class T, int size, class comparator>
 void sortFunc(T(&arr)[size], comparator func)
 {
-    for (size_t i = 0; i < size; i++)
+    for (int i = 0; i < size; i++)
     {
         /* do sorting blah blah and use function */
-        func(arr[i]);
+        func(arr[i], 8);
     }
 }
 

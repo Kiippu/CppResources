@@ -148,8 +148,30 @@ void STLContainers_main()
     */
 
     /**
-     * Unordered set
+     * std::unordered_set / std::unorded_multiset
     */
-    
+    std::cout << "std::unordered_set and std::unordered_multiset" << std::endl;
+    std::unordered_set<int> uSet = {1,2,3,4,5};
+    //std::unordered_multiset<int> uSet = {1,2,3,4,5};
+    for(auto const& itr : uSet )
+        std::cout<< "Bucket: " << uSet.bucket(itr) << " - " << itr << std::endl;
+    // get buckets info
+    std::cout << "Bucket count: " << uSet.bucket_count() << std::endl;  // bucketCount
+    std::cout << "Number of elements: " << uSet.size() << std::endl;    // element count
+    // measured as size / bucketCount at value of 1 it will indicate degrading
+    std::cout << "Load factor: " << uSet.load_factor() << std::endl;
+
+    /**
+     * std::unordered_map
+    */
+    std::cout << "std::unordered_map and std::unordered_multimap" << std::endl;
+    std::unordered_map<int,char> uMap = {{1,'h'},{3,'f'},{5,'h'},{3,'l'}};
+    // std::unordered_multimap<int,char> uMap = {{1,'h'},{3,'f'},{5,'h'},{3,'l'}};
+    for(auto const& itrMap : uMap )
+        std::cout << "Bucket: " << uMap.bucket(itrMap.first) << " - "  << itrMap.first << " - " << itrMap.second << std::endl;
+    std::cout << "Bucket count: " << uMap.bucket_count() << std::endl;  // bucketCount
+    std::cout << "Number of elements: " << uMap.size() << std::endl;    // element count
+    // measured as size / bucketCount at value of 1 it will indicate degrading
+    std::cout << "Load factor: " << uMap.load_factor() << std::endl;
 
 }

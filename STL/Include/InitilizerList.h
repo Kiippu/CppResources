@@ -42,7 +42,7 @@ public:
     }
 };
 
-int main(int argc, char const *argv[])
+int InitilizerList_main()
 {
     // user defined initializer list where previously not possible.
     AClass obj{23,23,43,2};

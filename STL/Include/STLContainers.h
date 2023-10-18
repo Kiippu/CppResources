@@ -8,8 +8,15 @@
 #include <set>
 #include <unordered_set>
 #include <unordered_map>
+#include <string>
 
-
+// test object
+struct Obj
+{
+    Obj(int x, std::string y) : id(x), name(y){}
+    int id;
+    std::string name;
+};
 
 void STLContainers_main()
 {
@@ -24,7 +31,7 @@ void STLContainers_main()
      *  - can be used in C functions with .data() 
      *  - Cannot grow in size 
     */
-   std::array<int,3> arr = {1,2,3};
+   std::array<int,3> arr{1,2,3};
 
    /**
     * std::vector
@@ -33,8 +40,13 @@ void STLContainers_main()
     *  - efficient for addition/remove at end
     *  - inefficient for insertion/deletion not at end
    */
-    std::vector<int> vec = {1,2,3};
+    std::vector<int> vec{1,2,3};
+    // push_back with move/copy the object into the array
     vec.push_back(23);
+    std::cout << "Capacity: " << vec.capacity() << std::endl;  // vector capacity until expanding
+    // use emplace_back or emplace to insert objects straight into any sequence container
+    std::vector<Obj> objArr;
+    objArr.emplace_back(23, "kory");
    
     /**
      * Iterators
@@ -50,7 +62,7 @@ void STLContainers_main()
      *  - provides random access
      *  - not good at deletion/insertion mid deque
     */
-    std::deque<int> deq = {1,2,3};
+    std::deque<int> deq{1,2,3};
     deq.push_front(23); // add to front and push_back() to back 
     deq.pop_front();    // pops the front most element
 
@@ -60,7 +72,7 @@ void STLContainers_main()
      * efficient for insertion/deletion anywhere, done in constant time
      * does NOT provide random access
     */
-    std::list<int> list = {1,3,4,5};
+    std::list<int> list{1,3,4,5};
     list.push_front(23); // add to front and push_back() to back 
     list.insert(++list.begin(), 40); // inserts in to list at font position + 1
 
@@ -75,7 +87,7 @@ void STLContainers_main()
      *  - element added to front only 
      *  - no support for size
     */
-    std::forward_list<int> fwdList = {2,3,4,65};
+    std::forward_list<int> fwdList{2,3,4,65};
     fwdList.push_front(34);
     fwdList.insert_after(fwdList.begin(), 34);
     fwdList.erase_after(fwdList.begin());
@@ -88,16 +100,25 @@ void STLContainers_main()
      *  - no random access
      *  - elements can not be modified directly
     */
-    std::set<int> set = {1,2,3,4,5}; // by default is  is std::less
+    std::set<int> set{1,2,3,4,5}; // by default is  is std::less
     std::set<int,std::greater<int>> setGreater = {1,2,3,4,5};
     set.insert(34);
-    set.find(3); // will find 3 if not it will be iterator::end()
+    auto itr = set.find(6); // will find 3 if not it will be iterator::end() <C++20
+    if(itr != set.end())    // <C++20
+        set.insert(6);
+    if(!set.contains(6))    // >C++20 
+        set.insert(6);
+    // how to update element from set
+    auto node = set.extract(4);     // use value of iterator
+    node.value() = 10;              // update value
+    set.insert(std::move(node));    // insert back into set
+
 
     /**
      * std::multiset
      *  - like set but can have multiple instances of a key
     */
-    std::multiset<int> multiset = {1,1,3,4,1};
+    std::multiset<int> multiset{1,1,3,4,1};
     auto iterMSet = multiset.equal_range(1);
     while(iterMSet.first != iterMSet.second){
         iterMSet.first++; // get each value that is equal to 1
@@ -112,7 +133,7 @@ void STLContainers_main()
      *  - no random access
      *  - keys cannot be modified
     */
-    std::map<int,char> map = {{1,'h'},{3,'f'}};
+    std::map<int,char> map{{1,'h'},{3,'f'}};
     map[45] = 's';
     map.insert(std::make_pair(23,'a'));
     for(auto const& itr : map )
@@ -127,7 +148,7 @@ void STLContainers_main()
      *  - same as above but
      *  - stored in pares of key and value - no dups
     */
-    std::multimap<int,char> multiMap = {{1,'h'},{3,'f'},{1,'h'}};
+    std::multimap<int,char> multiMap{{1,'h'},{3,'f'},{1,'h'}};
     auto iterMMap = multiMap.equal_range(1);
     while(iterMMap.first != iterMMap.second){
         std::cout << iterMMap.first->first << " - " << iterMMap.first->second << std::endl;
@@ -151,7 +172,7 @@ void STLContainers_main()
      * std::unordered_set / std::unorded_multiset
     */
     std::cout << "std::unordered_set and std::unordered_multiset" << std::endl;
-    std::unordered_set<int> uSet = {1,2,3,4,5};
+    std::unordered_set<int> uSet{1,2,3,4,5};
     //std::unordered_multiset<int> uSet = {1,2,3,4,5};
     for(auto const& itr : uSet )
         std::cout<< "Bucket: " << uSet.bucket(itr) << " - " << itr << std::endl;
@@ -165,7 +186,7 @@ void STLContainers_main()
      * std::unordered_map
     */
     std::cout << "std::unordered_map and std::unordered_multimap" << std::endl;
-    std::unordered_map<int,char> uMap = {{1,'h'},{3,'f'},{5,'h'},{3,'l'}};
+    std::unordered_map<int,char> uMap{{1,'h'},{3,'f'},{5,'h'},{3,'l'}};
     // std::unordered_multimap<int,char> uMap = {{1,'h'},{3,'f'},{5,'h'},{3,'l'}};
     for(auto const& itrMap : uMap )
         std::cout << "Bucket: " << uMap.bucket(itrMap.first) << " - "  << itrMap.first << " - " << itrMap.second << std::endl;

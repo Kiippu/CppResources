@@ -56,6 +56,9 @@
         "list": "cpp",
         "map": "cpp",
         "set": "cpp",
-        "unordered_set": "cpp"
+        "unordered_set": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp"
     }
 }

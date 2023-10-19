@@ -5,7 +5,7 @@
 #include <string>
 
 
-constexpr int SIZE = 9999;
+constexpr int SIZE = 999;
 std::list<int> g_list;
 
 // void Download(std::string file)  // pass by value
@@ -30,7 +30,7 @@ void StdLibThreads_main()
     downloadThread0.join();
     std::cout << "MAIN THREAD: run another thread but detach. main thread will not wait now" << std::endl;
     g_list.clear();
-    std::thread downloadThread1(Download);
+    std::thread downloadThread1(Download, std::cref(file));
     downloadThread1.detach();
     std::cout << "MAIN THREAD: process will close before detached thread  finishes" << std::endl;
 }

@@ -1,9 +1,11 @@
 
 #include "Include/stdLibThreads.h"
+#include "Include/ReturningValueFromThreads.h"
 
 int main(int argc, char const *argv[])
 {
     StdLibThreads_main();
-    /* code */
+    
+    ReturningValueFromThreads_main();
     return 0;
 }

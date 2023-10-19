@@ -6,5 +6,5 @@
  * accepts a callable as an argument
  * callable is executed in that separate thread
  * thread constructor does not for main thread to start
- * 
+ * constructor of std::tread is variadic
 */

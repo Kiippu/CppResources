@@ -25,7 +25,14 @@
  *      - std::future_status::deferred  - the async has a deferred launch policy
  *      - std::future_status::ready     - the task has returned the value
  *      - std::future_status::timeout   - the task is still running
- *  wait_until() - used to wait a specific time from chrono::now()
+ *   - wait_until() - used to wait a specific time from chrono::now()
+ * 
+ * HEADING: std::promise
+ *  - is a shared state
+ *  - can be accessed by another thread ia std::future 
+ *  - promise and future are 2 end points of the communication
+ *  - these are threadsafe
+ *  - promise objects can only be used once
  * 
 */
 
@@ -33,9 +40,23 @@
 #include <thread>
 #include <iostream>
 
-int Operation(long long size)
+long long Operation(long long size)
 {
     int sum{0};
+    for (long long i = 0; i < size; i++)
+    {
+        sum++;
+    }
+    return sum;
+}
+
+long long Operation2(std::promise<long long> &prom)
+{
+    auto fut = prom.get_future();
+    std::cout << "[promise task] waiting for promise" << std::endl;
+    auto size = fut.get();
+    std::cout << "[promise task] promise returned" << std::endl;
+    long long sum{0};
     for (long long i = 0; i < size; i++)
     {
         sum++;
@@ -85,5 +106,15 @@ void TaskBasedConcurrency_main()
         status2 = fut4.wait_until(timePoint + 1s);
     }
     std::cout << "Run wait_until() == " << fut4.get() << std::endl;
+
+
+    // promise example
+    std::promise<long long> data;
+    auto futPromExample = std::async(std::launch::async, Operation2, std::ref(data));
+    std::cout << "[main] sleep main to half promise" << std::endl;
+    std::this_thread::sleep_for(1s);
+    std::cout << "[main] setting promise data" << std::endl;
+    data.set_value(99999999);
+    std::cout << "[main] promise task done" << std::endl;
     
 }

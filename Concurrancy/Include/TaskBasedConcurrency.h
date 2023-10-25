@@ -40,6 +40,23 @@
 #include <thread>
 #include <iostream>
 
+void ExceptionExample(std::promise<long long> &prom)
+{
+    auto fut = prom.get_future();
+    try
+    {
+        std::cout << "[task-ExceptionExample] waiting for promise" << std::endl;
+        auto size = fut.get();
+        std::cout << "[task-ExceptionExample]  promise acquired" << std::endl;
+    }
+    catch(std::exception& e)
+    {
+        std::string msg = e.what();
+        std::cout << "[task-ExceptionExample] Exception: " << e.what() << std::endl;
+    }
+    
+}
+
 long long Operation(long long size)
 {
     int sum{0};
@@ -116,5 +133,20 @@ void TaskBasedConcurrency_main()
     std::cout << "[main] setting promise data" << std::endl;
     data.set_value(99999999);
     std::cout << "[main] promise task done" << std::endl;
+
+    // promise with exception
+    // throwing exception in one thread and the promise will know 
+    // it is not getting the data due to exception
+    std::promise<long long> data2;
+    auto futPromExample2 = std::async(std::launch::async, ExceptionExample, std::ref(data2));
+    try
+    {
+        throw std::runtime_error{"Data not available"};
+    }
+    catch(/*std::exception& e*/ ... )
+    {
+        data2.set_exception(std::current_exception());
+    }
+    
     
 }

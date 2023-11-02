@@ -2,6 +2,7 @@
 #include "include/Attributes.h"
 #include "include/FeatureMacros.h"
 #include "include/ifSwitchInitialization.h"
+#include "include/StructuredBindings.h"
 
 /**
  * HEADING: inline variables
@@ -46,5 +47,7 @@ int main(int argc, char const *argv[])
     FeatureMacros_main();
     // if switch initialization
     ifSwitchInitialization_main();
+    // structured bindings
+    StructuredBindings_main();
     return 0;
 }

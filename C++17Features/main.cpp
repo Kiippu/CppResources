@@ -6,7 +6,7 @@
 
 /**
  * HEADING: inline variables
- * allows for globals to break the one definition rule and cause linker errors.
+ *  allows for globals to break the one definition rule and cause linker errors.
 */
 // these globals if in a header will be inlined to each 
 //      file that uses it and no linker errors will occur
@@ -38,6 +38,17 @@ auto sum = [](int y, int x){
 };
 auto result = sum(2,3);             // this will not implicitly be constexpr - load value form address of sim()
 constexpr auto result2 = sum(2,3);   // this is implicitly a constexpr
+
+/**
+ * HEADING: Copy Elision/Omission
+ *  - c++17 this is now mandatory in compilers
+ *      - Mandatory in initializing expressions where you initialize an L-value with a R-value
+ *  - Copy Elision, also known as copy omission, is a compiler optimization 
+ *    technique that avoids unnecessary copying of objects. It enhances the 
+ *    efficiency of code by saving both space and time, making 'return by value' 
+ *    or 'pass-by-value' feasible in practice. It's important to note that copy 
+ *    elision is the only optimization that can change observable side-effects.
+*/
 
 int main(int argc, char const *argv[])
 {

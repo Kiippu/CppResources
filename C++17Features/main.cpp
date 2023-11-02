@@ -31,6 +31,13 @@ namespace A::B::C           // NEW WAY!
     void Foo1(){}; 
 }
 
+// Constant expression  lambdas
+auto sum = [](int y, int x){
+    return x+y;
+};
+auto result = sum(2,3);             // this will not implicitly be constexpr - load value form address of sim()
+constexpr auto result = sum(2,3);   // this is implicitly a constexpr
+
 int main(int argc, char const *argv[])
 {
     // shows attribute for complier warnings

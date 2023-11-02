@@ -37,7 +37,7 @@ auto sum = [](int y, int x){
     return x+y;
 };
 auto result = sum(2,3);             // this will not implicitly be constexpr - load value form address of sim()
-constexpr auto result = sum(2,3);   // this is implicitly a constexpr
+constexpr auto result2 = sum(2,3);   // this is implicitly a constexpr
 
 int main(int argc, char const *argv[])
 {

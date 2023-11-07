@@ -19,13 +19,16 @@
 
 template <typename T>
 void checkType() {
-    if constexpr (std::is_integral<T>::value) {
+    // if constexpr (std::is_integral<T>::value) {  // old way
+    if constexpr (std::is_integral_v<T>) {
         std::cout << "T is an integral type.\n";
     } else if constexpr (std::is_floating_point<T>::value) {
         std::cout << "T is a floating point type.\n";
     } else {
         std::cout << "T is neither integral nor floating point type.\n";
     }
+    // std::cout << std::is_reference_v<typename std::remove_reference<T>::type> << std:endl;   // old way
+    std::cout << std::is_reference_v<typename std::remove_reference_t<T>> << std:endl;          // new way
 }
 
 // Template Meta Programming

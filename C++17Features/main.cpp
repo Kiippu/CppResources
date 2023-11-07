@@ -3,6 +3,7 @@
 #include "include/FeatureMacros.h"
 #include "include/ifSwitchInitialization.h"
 #include "include/StructuredBindings.h"
+#include "include/ClassTemplateArgumentDeduction.h"
 
 /**
  * HEADING: inline variables
@@ -60,5 +61,7 @@ int main(int argc, char const *argv[])
     ifSwitchInitialization_main();
     // structured bindings
     StructuredBindings_main();
+    // Class template argument deduction
+    ClassTemplateArgumentDeduction_main();
     return 0;
 }

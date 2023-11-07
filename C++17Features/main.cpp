@@ -4,6 +4,7 @@
 #include "include/ifSwitchInitialization.h"
 #include "include/StructuredBindings.h"
 #include "include/ClassTemplateArgumentDeduction.h"
+#include "include/Folding.h"
 
 /**
  * HEADING: inline variables
@@ -63,5 +64,7 @@ int main(int argc, char const *argv[])
     StructuredBindings_main();
     // Class template argument deduction
     ClassTemplateArgumentDeduction_main();
+    // template folding
+    Folding_main();
     return 0;
 }

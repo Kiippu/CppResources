@@ -10,6 +10,7 @@
 */
 
 #include <optional>
+#include <iostream>
 
 void Optional_mai()
 {
@@ -21,4 +22,15 @@ void Optional_mai()
     // auto value3 = std::make_optional(5);     // this is older wat but valid
     if(value2) {}                               // TRUE
     if(value2.has_value()) {}                   // TRUE
+
+    // can reassign a new value to a optional
+    if(value.value_or(-1) == -1)    {
+        // 2 ways to get the value out of optional
+        std::cout << "nullopt value so we return" << *value << " instead" << std::endl;
+        std::cout << "nullopt value so we return" << value.value() << " instead" << std::endl;
+    }  // get value or give 9999
+    value = 10;
+    if(value) {}                    // value is now valid
+    value = std::nullopt;           // assign a null back to optional
+    value.reset();                  // or like this
 }

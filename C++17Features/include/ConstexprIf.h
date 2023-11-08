@@ -12,7 +12,7 @@ void Print(T const & value)
 {
     // without this constexpr all conditional statements will be evaluated
     // and some will not be  correct for particular types
-    constexpr if( std::is_pointer_v<T>)
+    if constexpr( std::is_pointer_v<T>)
     {
         // do something with the pointer
     }

@@ -6,7 +6,8 @@
 #include "include/ClassTemplateArgumentDeduction.h"
 #include "include/Folding.h"
 #include "include/ConstexprIf.h"
-
+#include "include/Optional.h"
+#include "include/Variant.h"
 /**
  * HEADING: inline variables
  *  allows for globals to break the one definition rule and cause linker errors.
@@ -69,5 +70,9 @@ int main(int argc, char const *argv[])
     Folding_main();
     // Constexpr if
     ConstexprIf_main();
+    // Optional types
+    Optional_main();
+    // variant types
+    Variant_main();
     return 0;
 }

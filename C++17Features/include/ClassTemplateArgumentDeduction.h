@@ -32,7 +32,7 @@ void ClassTemplateArgumentDeduction_main()
 
     std::mutex m;
     // old way
-    std::lock_guard<std::mutex> lock1(m);
+    // std::lock_guard<std::mutex> lock1(m);
     // new way
     std::lock_guard lock2(m);
 

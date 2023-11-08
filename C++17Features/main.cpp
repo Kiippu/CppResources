@@ -5,6 +5,7 @@
 #include "include/StructuredBindings.h"
 #include "include/ClassTemplateArgumentDeduction.h"
 #include "include/Folding.h"
+#include "include/ConstexprIf.h"
 
 /**
  * HEADING: inline variables
@@ -66,5 +67,7 @@ int main(int argc, char const *argv[])
     ClassTemplateArgumentDeduction_main();
     // template folding
     Folding_main();
+    // Constexpr if
+    ConstexprIf_main();
     return 0;
 }

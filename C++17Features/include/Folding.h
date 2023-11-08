@@ -60,7 +60,7 @@ void Folding_main()
     auto result =  Sum(1,2,3,4,5);
     auto result2 = AnyOf(1,2,3,4);  // true if any are even
     auto result3 = AllOf(1,2,3,4);  // true if all are even
-    auto result2 = AnyOf2(
+    auto result4 = AnyOf2(
         [](int x){return x % 2 == 0;},
         1,2,3,4
         );                          // true it any are even

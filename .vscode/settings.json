@@ -63,6 +63,7 @@
         "condition_variable": "cpp",
         "future": "cpp",
         "mutex": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "optional": "cpp"
     }
 }

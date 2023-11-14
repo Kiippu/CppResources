@@ -8,6 +8,9 @@
 #include "include/ConstexprIf.h"
 #include "include/Optional.h"
 #include "include/Variant.h"
+#include "include/Any.h"
+#include "include/StringView.h"
+
 /**
  * HEADING: inline variables
  *  allows for globals to break the one definition rule and cause linker errors.
@@ -74,5 +77,9 @@ int main(int argc, char const *argv[])
     Optional_main();
     // variant types
     Variant_main();
+    // any types
+    Any_main();
+    // string view uses
+    StringView_main();
     return 0;
 }

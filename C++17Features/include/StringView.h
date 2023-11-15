@@ -18,10 +18,27 @@
  *  - may not have a null terminator
  *  - no allocator support
  * 
+ * NOTE: 
+ *  - does not replace string
+ *  - do not return string_view to a string
+ *  - do not assign temp strings ro string views
+ *  - avoid them as class members
 */
 
 #include <iostream>
 #include <string_view>
+
+// example
+std::string toPretty(std::string_view str)
+{
+    std::string result{};
+    for (auto const i : str)
+    {
+        result+i;
+        result+'-';
+    }
+    return result;
+}
 
 void StringView_main()
 {
@@ -61,6 +78,7 @@ void StringView_main()
     svv.remove_suffix(2);
     std::cout << svv << std::endl;
 
-    
+    // use in a fuction
+    toPretty("jello");
     
 }

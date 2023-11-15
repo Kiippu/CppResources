@@ -40,10 +40,10 @@ void Any_main()
     a.reset();
     a = 'd';
     // get by value 
-    auto s = std::any_cast<int>(a);
+    auto s = std::any_cast<char>(a);
     // get by reference
-    auto &f = std::any_cast<int&>(a);
+    auto &f = std::any_cast<char&>(a);
     // get by pointer
-    auto g = std::any_cast<int>(&a);
+    auto g = std::any_cast<char>(&a);
     
 }

@@ -64,6 +64,7 @@
         "future": "cpp",
         "mutex": "cpp",
         "variant": "cpp",
-        "optional": "cpp"
+        "optional": "cpp",
+        "any": "cpp"
     }
 }
